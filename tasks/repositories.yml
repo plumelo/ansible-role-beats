@@ -1,0 +1,12 @@
+---
+
+- name: Add apt key.
+  apt_key:
+    url: '{{ beats_apt_key_url }}'
+    state: present
+
+- name: Add repository.
+  apt_repository:
+    repo: '{{ beats_repo }}'
+    state: present
+    update_cache: true
