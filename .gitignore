@@ -1,0 +1,7 @@
+*.retry
+.vagrant
+tests/roles/*
+!tests/roles/plumelo.filebeat
+credentials
+.git
+
