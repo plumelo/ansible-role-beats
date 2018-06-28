@@ -1,2 +1,7 @@
 ---
-# tasks file for ansible-role-beats
+
+- import_tasks: dependecies.yml
+
+- import_tasks: repositories.yml
+
+- import_tasks: filebeat.yml
