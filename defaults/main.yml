@@ -1,2 +1,9 @@
 ---
-# defaults file for ansible-role-beats
+
+# beats_user: beats
+beats_apt_key_url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+beats_repo: deb https://artifacts.elastic.co/packages/6.x/apt stable main
+
+filebeat_config_defaults: {}
+filebeat_config: {}
+_filebeat_config: '{{ filebeat_config_defaults | combine(filebeat_config) }}'
