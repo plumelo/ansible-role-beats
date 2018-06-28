@@ -4,7 +4,7 @@
   become: true
   roles:
     - role: plumelo.beats
-      filebeat_config:
+      filebeat_configs:
         filebeat.inputs:
           - type: log
             enabled: false
@@ -25,3 +25,28 @@
           - module: system
             syslog:
               enabled: true
+          - module: auditd
+            log:
+              enabled: true
+          - module: icinga
+            main:
+              enabled: true
+            startup:
+              enabled: true
+          - module: mysql
+            error:
+              enabled: true
+            slowlog:
+              enabled: true
+          - module: nginx
+            access:
+              enabled: true
+            error:
+              enabled: true
+          - module: redis
+            log:
+              enabled: true
+              var.paths: ["/var/log/redis/redis-server.log*"]
+            slowlog:
+              enabled: true
+              var.hosts: ["localhost:6379"]

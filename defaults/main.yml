@@ -4,6 +4,11 @@
 beats_apt_key_url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 beats_repo: deb https://artifacts.elastic.co/packages/6.x/apt stable main
 
-filebeat_config_defaults: {}
-filebeat_config: {}
-_filebeat_config: '{{ filebeat_config_defaults | combine(filebeat_config) }}'
+filebeat_configs_defaults: {}
+filebeat_configs: {}
+_filebeat_configs: '{{ filebeat_configs_defaults | combine(filebeat_configs) }}'
+
+filebeat_modules:
+  - nginx
+  - system
+  - mysql

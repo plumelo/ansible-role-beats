@@ -5,3 +5,5 @@
 - import_tasks: repositories.yml
 
 - import_tasks: filebeat.yml
+
+- import_tasks: modules.yml
