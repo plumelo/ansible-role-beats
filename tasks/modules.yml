@@ -4,5 +4,5 @@
   shell: 'filebeat modules enable {{ item }}'
   args:
     chdir: '/etc/filebeat'
-  creates: '/etc/filebeat/modules.d/{{ item }}.yml'
+    creates: '/etc/filebeat/modules.d/{{ item }}.yml'
   with_items: '{{ filebeat_modules }}'
