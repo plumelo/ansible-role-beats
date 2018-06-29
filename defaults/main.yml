@@ -1,6 +1,5 @@
 ---
 
-# beats_user: beats
 beats_apt_key_url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 beats_repo: deb https://artifacts.elastic.co/packages/6.x/apt stable main
 
@@ -12,3 +11,7 @@ filebeat_modules:
   - nginx
   - system
   - mysql
+  - icinga
+  - iis
+  - kafka
+  - mongodb

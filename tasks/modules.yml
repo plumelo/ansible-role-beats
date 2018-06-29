@@ -1,8 +1,19 @@
 ---
 
+- name: List modules
+  shell: 'filebeat modules list'
+  args:
+    chdir: '/etc/filebeat/modules.d'
+  register: modules_list
+  changed_when: false
+
+- debug:
+    var: modules_list
+
 - name: Enable filebeat modules
   shell: 'filebeat modules enable {{ item }}'
   args:
     chdir: '/etc/filebeat'
-    creates: '/etc/filebeat/modules.d/{{ item }}.yml'
+    # creates: '/etc/filebeat/modules.d/{{ item }}.yml'
   with_items: '{{ filebeat_modules }}'
+  when: item not in (modules_list.stdout.split("Disabled:")[0])
