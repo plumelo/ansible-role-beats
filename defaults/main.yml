@@ -15,3 +15,7 @@ filebeat_modules:
   - iis
   - kafka
   - mongodb
+
+metricbeat_configs_defaults: {}
+metricbeat_configs: {}
+_metricbeat_configs: '{{ metricbeat_configs_defaults | combine(metricbeat_configs) }}'

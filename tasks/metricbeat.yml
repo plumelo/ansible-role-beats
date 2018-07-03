@@ -1,0 +1,14 @@
+---
+
+- name: Install metricbeat
+  apt:
+    name: metricbeat
+    state: present
+
+- name: Filebeat configuration
+  template:
+    src: metricbeat.yml.j2
+    dest: /etc/metricbeat/filebeat.yml
+  with_items:
+    - '{{ _metricbeat_configs }}'
+  notify: restart metricbeat
