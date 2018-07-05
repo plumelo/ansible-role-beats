@@ -6,7 +6,6 @@ beats_repo: deb https://artifacts.elastic.co/packages/6.x/apt stable main
 filebeat_configs_defaults: {}
 filebeat_configs: {}
 _filebeat_configs: '{{ filebeat_configs_defaults | combine(filebeat_configs) }}'
-
 filebeat_modules:
   - nginx
   - system
@@ -19,3 +18,7 @@ filebeat_modules:
 metricbeat_configs_defaults: {}
 metricbeat_configs: {}
 _metricbeat_configs: '{{ metricbeat_configs_defaults | combine(metricbeat_configs) }}'
+metricbeat_modules:
+  - kibana
+  - nginx
+  - mysql

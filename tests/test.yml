@@ -50,3 +50,39 @@
             slowlog:
               enabled: true
               var.hosts: ["localhost:6379"]
+        xpack.monitoring.enabled: true
+        xpack.monitoring.elasticsearch:
+      metricbeat_configs:
+        metricbeat.config.modules:
+          path: /etc/metricbeat/modules.d/*.yml
+          reload.enabled: false
+          reload.period: 10s
+        setup.template.settings:
+          index.number_of_shards: 1
+          index.codec: best_compression
+        setup.kibana:
+          host: "localhost:5601"
+        output.elasticsearch:
+          hosts: ["localhost:9200"]
+          protocol: "https"
+          username: "elastic"
+          password: "changeme"
+        metricbeat.modules:
+          - module: system
+            metricsets:
+              - cpu
+              - filesystem
+              - memory
+              - network
+              - process
+            enabled: true
+            period: 10s
+            processes: ['.*']
+            cpu_ticks: false
+          - module: nginx
+            metricsets: ["status"]
+            enabled: true
+            period: 1s
+            hosts: ["http://127.0.0.1"]
+        xpack.monitoring.enabled: true
+        xpack.monitoring.elasticsearch:
