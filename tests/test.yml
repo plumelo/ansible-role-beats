@@ -83,6 +83,6 @@
             metricsets: ["status"]
             enabled: true
             period: 1s
-            hosts: ["http://127.0.0.1"]
+            hosts: ["http://0.0.0.0"]
         xpack.monitoring.enabled: true
         xpack.monitoring.elasticsearch:
