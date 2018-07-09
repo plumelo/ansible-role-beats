@@ -6,8 +6,8 @@
 
 - import_tasks: filebeat.yml
 
-- import_tasks: filebeat_modules.yml
+# - import_tasks: filebeat_modules.yml
 
 - import_tasks: metricbeat.yml
 
-- import_tasks: metricbeat_modules.yml
+# - import_tasks: metricbeat_modules.yml

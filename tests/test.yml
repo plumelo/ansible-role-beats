@@ -9,80 +9,9 @@
           - type: log
             enabled: false
             paths:
-              - /var/log/*.log
-        filebeat.config.modules:
-          path: /etc/filebeat/modules.d/*.yml
-          reload.enabled: false
-          reload.period: 10s
-        output.elasticsearch:
-          hosts: ["localhost:9200"]
-          protocol: "http"
-          username: "elastic"
-          password: "changeme"
-        filebeat.modules:
-          - module: nginx
-          - module: mysql
-          - module: system
-            syslog:
-              enabled: true
-          - module: auditd
-            log:
-              enabled: true
-          - module: icinga
-            main:
-              enabled: true
-            startup:
-              enabled: true
-          - module: mysql
-            error:
-              enabled: true
-            slowlog:
-              enabled: true
-          - module: nginx
-            access:
-              enabled: true
-            error:
-              enabled: true
-          - module: redis
-            log:
-              enabled: true
-              var.paths: ["/var/log/redis/redis-server.log*"]
-            slowlog:
-              enabled: true
-              var.hosts: ["localhost:6379"]
+              - /var/log/filebeat/filebeat
         xpack.monitoring.enabled: true
         xpack.monitoring.elasticsearch:
-      metricbeat_configs:
-        metricbeat.config.modules:
-          path: /etc/metricbeat/modules.d/*.yml
-          reload.enabled: false
-          reload.period: 10s
-        setup.template.settings:
-          index.number_of_shards: 1
-          index.codec: best_compression
-        setup.kibana:
-          host: "localhost:5601"
-        output.elasticsearch:
-          hosts: ["localhost:9200"]
-          protocol: "https"
-          username: "elastic"
-          password: "changeme"
-        metricbeat.modules:
-          - module: system
-            metricsets:
-              - cpu
-              - filesystem
-              - memory
-              - network
-              - process
-            enabled: true
-            period: 10s
-            processes: ['.*']
-            cpu_ticks: false
-          - module: nginx
-            metricsets: ["status"]
-            enabled: true
-            period: 1s
-            hosts: ["http://0.0.0.0"]
-        xpack.monitoring.enabled: true
-        xpack.monitoring.elasticsearch:
+      # metricbeat_configs:
+      #   xpack.monitoring.enabled: true
+      #   xpack.monitoring.elasticsearch:
