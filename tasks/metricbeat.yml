@@ -5,7 +5,7 @@
     name: metricbeat
     state: present
 
-- name: Filebeat configuration
+- name: Metricbeat configuration
   template:
     src: metricbeat.yml.j2
     dest: /etc/metricbeat/filebeat.yml
