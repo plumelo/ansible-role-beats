@@ -8,7 +8,7 @@
 - name: Metricbeat configuration
   template:
     src: metricbeat.yml.j2
-    dest: /etc/metricbeat/filebeat.yml
+    dest: /etc/metricbeat/metricbeat.yml
   with_items:
     - '{{ _metricbeat_configs }}'
   notify: restart metricbeat
