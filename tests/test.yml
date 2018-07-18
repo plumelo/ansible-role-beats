@@ -12,6 +12,6 @@
               - /var/log/filebeat/filebeat
         xpack.monitoring.enabled: true
         xpack.monitoring.elasticsearch:
-      # metricbeat_configs:
-      #   xpack.monitoring.enabled: true
-      #   xpack.monitoring.elasticsearch:
+      metricbeat_configs:
+        xpack.monitoring.enabled: true
+        xpack.monitoring.elasticsearch:
