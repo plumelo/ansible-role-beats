@@ -3,9 +3,9 @@
 - name: restart filebeat
   service:
     name: filebeat
-    state: restarted
+    state: started
 
 - name: restart metricbeat
   service:
     name: metricbeat
-    state: restarted
+    state: started
