@@ -7,11 +7,58 @@
       filebeat_configs:
         filebeat.inputs:
           - type: log
-            enabled: false
+            enabled: true
             paths:
               - /var/log/filebeat/filebeat
+          - type: log
+            enabled: true
+            paths:
+              - /var/log/nginx/*.log
+            fields:
+              nginx: true
+            fields_under_root: true
+          - type: log
+            enabled: true
+            paths:
+              - /var/log/mysql/*.log
+            fields:
+              mysql: true
+            fields_under_root: true
+          - type: log
+            enabled: true
+            paths:
+              - /var/log/redis/*.log
+            fields:
+              redis: true
+            fields_under_root: true
+        output.elasticsearch:
+          hosts: ["elasticsearch.lxd:9200"]
+          # protocol: "https"
+          username: "elastic"
+          password: "changeme"
         xpack.monitoring.enabled: true
         xpack.monitoring.elasticsearch:
+        setup.kibana:
+          host: "kibana.lxd:5601"
+        setup.dashboards.enabled: true
       metricbeat_configs:
+        metricbeat.modules:
+          - module: nginx
+            metricsets: ['stubstatus']
+            enabled: true
+            period: 10s
+            hosts: ['packagist.local']
+          - module: redis
+            metricsets: ["info", "keyspace"]
+            enabled: true
+            period: 10s
+            hosts: ["packagist.lxd:6379"]
+        output.elasticsearch:
+          hosts: ["elasticsearch.lxd:9200"]
+          username: "elastic"
+          password: "changeme"
         xpack.monitoring.enabled: true
         xpack.monitoring.elasticsearch:
+        setup.kibana:
+          host: "kibana.lxd:5601"
+        setup.dashboards.enabled: true
